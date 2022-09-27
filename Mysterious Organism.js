@@ -22,7 +22,7 @@ let testOragnism = {
     "A",
     "A",
     "A",
-    "G",
+    "A",
     "T",
     "T",
     "A",
@@ -97,8 +97,26 @@ const pAequorFactory = (num, arr) => {
       let percentageCommonBaes = (totalNoBases / 15) * 100;
       return `specimen #1 and specimen #2 have ${percentageCommonBaes}% DNA in common`;
     },
+    willLikelySurvive() {
+      let dnaArr = this.dna;
+      let cAndG = [];
+      for (let x = 0; x < dnaArr.length; x++) {
+        if (dnaArr[x] === "C" || dnaArr[x] === "G") {
+          cAndG.push(dnaArr[x]);
+        }
+      }
+      //console.log(cAndG);
+      let sumCG = cAndG.length;
+      let percentageCG = (sumCG / 15) * 100;
+      if (percentageCG >= 60) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   };
 };
 
 const specemin1 = pAequorFactory(1, testArr);
 console.log(specemin1.compareDNA(testOragnism));
+console.log(specemin1.willLikelySurvive());
