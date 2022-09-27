@@ -117,6 +117,18 @@ const pAequorFactory = (num, arr) => {
   };
 };
 
-const specemin1 = pAequorFactory(1, testArr);
+const specemin1 = pAequorFactory(31, testArr);
 console.log(specemin1.compareDNA(testOragnism));
 console.log(specemin1.willLikelySurvive());
+
+let speceminArr = [];
+let n = 1;
+while (speceminArr.length < 30) {
+  let newPAequor = pAequorFactory(n, mockUpStrand());
+
+  if (newPAequor.willLikelySurvive()) {
+    speceminArr.push(newPAequor);
+  }
+  n++;
+}
+console.log(speceminArr);
