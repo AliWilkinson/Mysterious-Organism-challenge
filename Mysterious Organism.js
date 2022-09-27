@@ -16,6 +16,27 @@ let testArr = [
   "T",
 ];
 
+let testOragnism = {
+  specimenNum: 2,
+  dna: [
+    "A",
+    "A",
+    "A",
+    "G",
+    "T",
+    "T",
+    "A",
+    "A",
+    "C",
+    "A",
+    "G",
+    "C",
+    "C",
+    "G",
+    "T",
+  ],
+};
+
 // Returns a random DNA base
 const returnRandBase = () => {
   const dnaBases = ["A", "T", "C", "G"];
@@ -61,8 +82,23 @@ const pAequorFactory = (num, arr) => {
       this.dna[index] = newBase;
       return this.dna;
     },
+    compareDNA(pAequor) {
+      let commonBases = [];
+      let s1Bases = this.dna;
+      let s2Bases = pAequor.dna;
+      for (let x = 0; x < 15; x++) {
+        if (s1Bases[x] === s2Bases[x]) {
+          commonBases.push(s1Bases[x]);
+        }
+      }
+
+      console.log(commonBases);
+      let totalNoBases = commonBases.length;
+      let percentageCommonBaes = (totalNoBases / 15) * 100;
+      return `specimen #1 and specimen #2 have ${percentageCommonBaes}% DNA in common`;
+    },
   };
 };
 
 const specemin1 = pAequorFactory(1, testArr);
-console.log(specemin1.mutate());
+console.log(specemin1.compareDNA(testOragnism));
